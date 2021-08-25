@@ -1,5 +1,6 @@
 package com.faryz.testapp.first
 
+import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,7 @@ class UserList(private val userList: MutableList<ListUser>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val loc = userList[position]
         holder.name.text = "${loc.firstName} ${loc.lastName}"
+        d("bomoh", "name ${loc.firstName}")
     }
 
     override fun getItemCount(): Int {
