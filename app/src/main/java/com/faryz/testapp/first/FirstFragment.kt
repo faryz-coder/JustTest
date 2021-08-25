@@ -33,16 +33,24 @@ class FirstFragment : Fragment() {
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
 
         val recyclerView = binding.userRecyclerView
+        fun displayUser() {
+            userListViewModel.users.observe(viewLifecycleOwner, Observer {
+                d("bomoh", "user list: $it")
+                val userListAdapter = UserList(it)
+                recyclerView.apply {
+                    layoutManager = LinearLayoutManager(this@FirstFragment.context)
+                    adapter = userListAdapter
+                }
+                userListAdapter.notifyDataSetChanged()
+            })
+        }
+        displayUser()
 
-        userListViewModel.users.observe(viewLifecycleOwner, Observer {
-            d("bomoh", "user list: $it")
-            val userListAdapter = UserList(it)
-            recyclerView.apply {
-                layoutManager = LinearLayoutManager(this@FirstFragment.context)
-                adapter = userListAdapter
-            }
-            userListAdapter.notifyDataSetChanged()
-        })
+
+        binding.swipeToRefresh.setOnRefreshListener {
+            displayUser()
+            binding.swipeToRefresh.isRefreshing = false
+        }
 
         return binding.root
 
