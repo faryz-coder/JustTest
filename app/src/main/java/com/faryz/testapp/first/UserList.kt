@@ -1,4 +1,4 @@
-package com.faryz.testapp
+package com.faryz.testapp.first
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.faryz.testapp.R
 
 class UserList(private val userList: MutableList<ListUser>) :
     RecyclerView.Adapter<UserList.ViewHolder>() {
