@@ -1,4 +1,4 @@
-package com.faryz.testapp
+package com.faryz.testapp.second
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.faryz.testapp.R
 import com.faryz.testapp.databinding.FragmentSecondBinding
 
 /**
@@ -25,6 +26,16 @@ class SecondFragment : Fragment() {
     ): View? {
 
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        val id = arguments?.getString("id").toString()
+        val firstName = arguments?.getString("firstName").toString()
+        val lastName = arguments?.getString("lastName").toString()
+        val email = arguments?.getString("email").toString()
+        val phone = arguments?.getString("phone").toString()
+
+        binding.secondFirstName.setText(firstName)
+        binding.secondLastName.setText(lastName)
+        binding.secondEmail.setText(email)
+        binding.secondPhone.setText(phone)
         return binding.root
 
     }

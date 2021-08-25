@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.faryz.testapp.R
 
@@ -25,6 +27,10 @@ class UserList(private val userList: MutableList<ListUser>) :
         val loc = userList[position]
         holder.name.text = "${loc.firstName} ${loc.lastName}"
         d("bomoh", "name ${loc.firstName}")
+        holder.row.setOnClickListener {
+            val bundle = bundleOf("id" to loc.id, "firstName" to loc.firstName, "lastName" to loc.lastName, "email" to loc.email, "phone" to loc.phone)
+            holder.itemView.findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
+        }
     }
 
     override fun getItemCount(): Int {

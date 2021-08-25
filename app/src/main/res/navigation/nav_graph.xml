@@ -17,12 +17,32 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.faryz.testapp.SecondFragment"
+        android:name="com.faryz.testapp.second.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <argument
+            android:name="firstName"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="lastName"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="phone"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>
