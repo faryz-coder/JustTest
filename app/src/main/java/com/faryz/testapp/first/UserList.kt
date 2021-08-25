@@ -26,7 +26,7 @@ class UserList(private val userList: MutableList<ListUser>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val loc = userList[position]
         holder.name.text = "${loc.firstName} ${loc.lastName}"
-        d("bomoh", "name ${loc.firstName}")
+//        d("bomoh", "name ${loc.firstName}")
         holder.row.setOnClickListener {
             val bundle = bundleOf("id" to loc.id, "firstName" to loc.firstName, "lastName" to loc.lastName, "email" to loc.email, "phone" to loc.phone, "position" to position.toString())
             holder.itemView.findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
