@@ -16,6 +16,10 @@ class UserListViewModel(application: Application) : AndroidViewModel(application
         userList[position.toInt()] = ListUser(id, firstName, lastName, email, phone)
     }
 
+    fun addUserList(id: String, firstName: String, lastName: String, email: String, phone: String) {
+        userList.add(ListUser(id, firstName, lastName, email, phone))
+    }
+
     private val _users = MutableLiveData<MutableList<ListUser>>().apply {
 
         val inputStream = application.assets.open("data.json")
@@ -29,11 +33,11 @@ class UserListViewModel(application: Application) : AndroidViewModel(application
                     val id = jsonObject.getString("id")
                     val firstName = jsonObject.getString("firstName")
                     val lastName = jsonObject.getString("lastName")
-                    var email = "null"
+                    var email = " "
                     if (jsonObject.has("email")) {
                         email = jsonObject.getString("email")
                     }
-                    var phone = "null"
+                    var phone = " "
                     if (jsonObject.has("phone")) {
                         phone = jsonObject.getString("phone")
                     }

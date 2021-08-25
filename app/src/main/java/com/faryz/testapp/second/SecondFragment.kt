@@ -29,16 +29,22 @@ class SecondFragment : Fragment() {
     ): View? {
 
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        if (!arguments?.getString("id").toString().isNullOrEmpty()) {
+            val firstName = arguments?.getString("firstName").toString()
+            val lastName = arguments?.getString("lastName").toString()
+            val email = arguments?.getString("email").toString()
+            val phone = arguments?.getString("phone").toString()
 
-        val firstName = arguments?.getString("firstName").toString()
-        val lastName = arguments?.getString("lastName").toString()
-        val email = arguments?.getString("email").toString()
-        val phone = arguments?.getString("phone").toString()
+            binding.secondFirstName.setText(firstName)
+            binding.secondLastName.setText(lastName)
+            binding.secondEmail.setText(email)
+            binding.secondPhone.setText(phone)
+        }
 
-        binding.secondFirstName.setText(firstName)
-        binding.secondLastName.setText(lastName)
-        binding.secondEmail.setText(email)
-        binding.secondPhone.setText(phone)
+        binding.secondFirstName.setText("")
+        binding.secondLastName.setText("")
+        binding.secondEmail.setText("")
+        binding.secondPhone.setText("")
         return binding.root
 
     }
@@ -47,22 +53,27 @@ class SecondFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         userListViewModel = ViewModelProvider(requireActivity()).get(UserListViewModel::class.java)
 
-        binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-        }
-        binding.secondButtonSave.setOnClickListener {
+        binding.buttonSave.setOnClickListener {
             if (valid()) {
-                d("bomoh", "position ${
-                    arguments?.getString("position").toString()}")
+
                 val id = arguments?.getString("id").toString()
                 val position = arguments?.getString("position").toString()
                 val firstName = binding.secondFirstName.text.toString()
                 val lastName = binding.secondLastName.text.toString()
                 val email = binding.secondEmail.text.toString()
                 val phone = binding.secondPhone.text.toString()
-                userListViewModel.editUserList(position,id,firstName, lastName,email, phone)
+                if (!arguments?.getString("position").toString().isNullOrEmpty()) {
+                    userListViewModel.editUserList(position,id,firstName, lastName,email, phone)
+                } else {
+                    //new data
+                    userListViewModel.addUserList(id, firstName, lastName, email, phone)
+                }
+
                 findNavController().popBackStack()
             }
+        }
+        binding.buttonCancel.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 
