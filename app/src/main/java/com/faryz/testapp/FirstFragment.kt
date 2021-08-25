@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.faryz.testapp.databinding.FragmentFirstBinding
 
 /**
@@ -25,6 +26,14 @@ class FirstFragment : Fragment() {
     ): View? {
 
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        val recyclerView = binding.userRecyclerView
+        val userList = mutableListOf<ListUser>()
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(this@FirstFragment.context)
+            adapter = UserList(userList)
+        }
+
+
         return binding.root
 
     }
