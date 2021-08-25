@@ -29,7 +29,7 @@ class FirstFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        userListViewModel = ViewModelProvider(this).get(UserListViewModel::class.java)
+        userListViewModel = ViewModelProvider(requireActivity()).get(UserListViewModel::class.java)
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
 
         val recyclerView = binding.userRecyclerView

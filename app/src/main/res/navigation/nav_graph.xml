@@ -44,5 +44,9 @@
             android:name="id"
             app:argType="string"
             app:nullable="true" />
+        <argument
+            android:name="position"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>
