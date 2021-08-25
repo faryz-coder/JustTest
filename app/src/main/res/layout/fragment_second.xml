@@ -99,7 +99,6 @@
         android:layout_marginTop="13dp"
         android:background="@drawable/item_border"
         android:ems="10"
-        android:hint="test"
         android:inputType="phone"
         android:paddingHorizontal="10dp"
         app:layout_constraintEnd_toEndOf="@+id/second_firstName"

@@ -39,12 +39,14 @@ class SecondFragment : Fragment() {
             binding.secondLastName.setText(lastName)
             binding.secondEmail.setText(email)
             binding.secondPhone.setText(phone)
+        } else{
+            binding.secondFirstName.setText("")
+            binding.secondLastName.setText("")
+            binding.secondEmail.setText("")
+            binding.secondPhone.setText("")
         }
 
-        binding.secondFirstName.setText("")
-        binding.secondLastName.setText("")
-        binding.secondEmail.setText("")
-        binding.secondPhone.setText("")
+
         return binding.root
 
     }
